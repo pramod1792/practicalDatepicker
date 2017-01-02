@@ -5,7 +5,7 @@
   "config": {
     "port": "3000",
     "mongoose": {
-      "dbURI": "mongodb://localhost/practicaldb",
+      "dbURI": "mongodb://pramod:Pramod123@ds149998.mlab.com:49998/heroku_w6fqrtxl",
       "poolsize": 300,
       "logging": true
     },
