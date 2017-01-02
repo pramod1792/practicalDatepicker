@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
 var fs = require('fs');
+var conf = require('./package');
 
 var errors = {
 	Runtime : { json: { code : "ERR00000", message: "Runtime Exception Occurred.", description: "Runtime Exception Occurred."} , status: 500 }
@@ -60,10 +61,11 @@ app.use(
 	}
 );
 
+var port = process.env.PORT || conf.config.port;
 
-var server = app.listen(3000, function(){
+var server = app.listen(port, function(){
 	console.log('Server Started.');
-	console.log('Server is listening at: '+3000);
+	console.log('Server is listening at: '+port);
 });
 server.timeout = 1800000;
 
