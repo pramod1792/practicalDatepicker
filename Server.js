@@ -30,7 +30,7 @@ require("./routes/practicalRoutes.js");
 
 app.get('/_ping',function(req,res){
 	res.status(200).send({"result":"ping success"})
-	
+
 })
 
 app.use(express.static(__dirname + '/views'));
@@ -63,15 +63,14 @@ app.use(
 
 var server = app.listen(3000, function(){
 	console.log('Server Started.');
-	console.log('Server is listening at: '+3000);		
+	console.log('Server is listening at: '+3000);
 });
 server.timeout = 1800000;
 
 // When Node process ends
-process.on('SIGINT', function() {  
-  mongoose.connection.close(function () { 
-    console.log('Mongoose default connection disconnected through app termination'); 
-    process.exit(0); 
-  }); 
+process.on('SIGINT', function() {
+  mongoose.connection.close(function () {
+    console.log('Mongoose default connection disconnected through app termination');
+    process.exit(0);
+  });
 });
-

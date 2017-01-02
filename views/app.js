@@ -4,7 +4,7 @@ dateApp.controller('dateAppController',['$scope','$http',function($scope,$http){
 	$scope.timeZone = "GMT";
 	$scope.offset = 0;
 	var originalDate;
-	
+
 	$scope.saveDate = function(){
 		var date = new Date($scope.selectedDate);
 		$http.post('/dates',{"date":date})
@@ -13,7 +13,8 @@ dateApp.controller('dateAppController',['$scope','$http',function($scope,$http){
 			getRecentDate();
 		},function(error){
 			console.log('Inside error....');
-			console.log(error)
+			alert('Please enter correct datetime value.');
+			console.log(error);
 			console.log(JSON.stringify(error));
 	});
 	}
@@ -25,7 +26,7 @@ dateApp.controller('dateAppController',['$scope','$http',function($scope,$http){
 			console.log(error)
 			console.log(JSON.stringify(error));
 	});
-	
+
 	var getRecentDate = function (){
 		$http.get('/recentdate')
 		.then(function(response){
@@ -42,25 +43,26 @@ dateApp.controller('dateAppController',['$scope','$http',function($scope,$http){
 	});
 	}
 	getRecentDate();
-	
+
 	var getConvertedDate = function(offset){
 		utc = originalDate.getTime() + (originalDate.getTimezoneOffset() * 60000);
-    	convertedDate = new Date(utc + (3600000*(offset))); 
+    	convertedDate = new Date(utc + (3600000*(offset)));
 		return convertedDate;
 	}
-	
+
 	$scope.changeRecentDateTimeZone = function(){
 		if(originalDate){
 			var convertedDate = getConvertedDate($scope.selectedTimeZone.offset);
 			var convertedDateString = convertedDate.toString();
-			console.log(convertedDate)
-			$scope.recentDate =convertedDateString.substr(0,convertedDateString.length - 30) + $scope.selectedTimeZone.abbr;
-			
+			console.log(convertedDate);
+			$scope.recentDate = convertedDateString.replace("GMT+0530 (IST)", $scope.selectedTimeZone.abbr);
+		///	$scope.recentDate =convertedDateString.substr(0,convertedDateString.length - 30) + $scope.selectedTimeZone.abbr;
+
 		}else{
 			alert("No recent date is saved, please save one to see the timeZone effect.")
 		}
-	
+
 	}
-	
-	
+
+
 }]);
