@@ -6,12 +6,19 @@
 </head>
 <body ng-controller="dateAppController">
 <div>
-<label>Recently selected date : {{recentlySelectedDate.date}}</label>
+<div>Select date and time in local timezone</div>
+<input type="datetime-local" ng-model="selectedDate"/>
+<input type="button" ng-click="saveDate()" value="Save"></input>
 </div>
 <br>
 <div>
-<input type="datetime-local" ng-model="selectedDate"/>
-<input type="button" ng-click="showDate()" value="Save"></input>
+<label>Recently selected date : {{recentDate}}</label>
 </div>
+<br>
+<div>
+<div>select different timezone for recent date</div>
+<select ng-model="selectedTimeZone" ng-options="t.abbr for t in timezones" ng-change="changeRecentDateTimeZone()"> </select>
+</div>
+<br>
 </body>
 </html>

@@ -1,7 +1,9 @@
 var app = require('./singletons/http-singleton').app;
+var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var fs = require('fs');
 
 var errors = {
 	Runtime : { json: { code : "ERR00000", message: "Runtime Exception Occurred.", description: "Runtime Exception Occurred."} , status: 500 }
@@ -31,6 +33,14 @@ app.get('/_ping',function(req,res){
 	
 })
 
+app.use(express.static(__dirname + '/views'));
+
+app.get('/', function(req, res){
+  res.redirect('/index.html');
+});
+
+
+
 
 
 app.use(
@@ -51,9 +61,9 @@ app.use(
 );
 
 
-var server = app.listen(process.env.npm_package_config_port, function(){
+var server = app.listen(3000, function(){
 	console.log('Server Started.');
-	console.log('Server is listening at: '+process.env.npm_package_config_port);		
+	console.log('Server is listening at: '+3000);		
 });
 server.timeout = 1800000;
 
