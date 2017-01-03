@@ -8,9 +8,11 @@
 <center>
   <br><br>
 <div>
-<div>Select date and time in local timezone : </div>
+<div>Select date and time in local timezone  </div>
+<span>
 <input type="datetime-local" ng-model="selectedDate"/>
 <input type="button" ng-click="saveDate()" value="Save"></input>
+</span>
 </div>
 <br>
 <div>
@@ -18,7 +20,7 @@
 </div>
 <br>
 <div>
-<div>Select different timezone for recent date :</div>
+<div>Select different timezone for recent date </div>
 <select ng-model="selectedTimeZone" ng-options="t.value for t in timezones" ng-change="changeRecentDateTimeZone()">
   <option value="">-Select TimeZone-</option>
 </select>
