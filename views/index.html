@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html ng-app="dateApp">
+
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-<script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="app.js"></script>
 </head>
+
 <body ng-controller="dateAppController">
-<center>
-  <br><br>
-<div>
-<div>Select date and time in local timezone  </div>
-<span>
-<input type="datetime-local" ng-model="selectedDate"/>
-<input type="button" ng-click="saveDate()" value="Save"></input>
-</span>
-</div>
-<br>
-<div>
-<label>Recently selected date : <i><b>{{recentDate}}</b></i></label>
-</div>
-<br>
-<div>
-<div>Select different timezone for recent date </div>
-<select ng-model="selectedTimeZone" ng-options="t.value for t in timezones" ng-change="changeRecentDateTimeZone()">
-  <option value="">-Select TimeZone-</option>
-</select>
-</div>
-</center>
-<br>
+    <center>
+        <br>
+        <br>
+        <div>
+            <div>Select date and time in local timezone </div>
+
+            <input type="datetime-local" ng-model="selectedDate" />
+            <input type="button" ng-click="saveDate()" value="Save"></input>
+
+        </div>
+        <br>
+        <div>
+            <label>Recently selected date : <i><b>{{recentDate}}</b></i>
+            </label>
+        </div>
+        <br>
+        <div>
+            <div>Select different timezone for recent date </div>
+            <select ng-model="selectedTimeZone" ng-options="t.value for t in timezones" ng-change="changeRecentDateTimeZone()">
+                <option value="">-Select TimeZone-</option>
+            </select>
+        </div>
+    </center>
+    <br>
 </body>
+
 </html>
