@@ -56,6 +56,8 @@ dateApp.controller('dateAppController',['$scope','$http',function($scope,$http){
 			var convertedDateString = convertedDate.toString();
 			console.log(convertedDate);
 			$scope.recentDate = convertedDateString.replace("GMT+0530 (IST)", $scope.selectedTimeZone.abbr);
+			$scope.recentDate = convertedDateString.replace("GMT+0530 (India Standard Time)", $scope.selectedTimeZone.abbr);
+			
 		///	$scope.recentDate =convertedDateString.substr(0,convertedDateString.length - 30) + $scope.selectedTimeZone.abbr;
 
 		}else{
